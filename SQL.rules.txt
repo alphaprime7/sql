@@ -1,0 +1,25 @@
+mySQL understanding rules to help with my logic
+1. It always involves making new tables from the original data as Pete says filtering
+2. know my clauses where, and, or, group by
+3. know logical operators (like,in,on,between)
+4. know comparison operators ( i am a mathematician duh)
+5. aggregate
+6. filter aggregates to get desired results.
+
+GROUP RULEs for me
+0. An attribute that cannot be grouped does NOT go into the group by clause (NEVER DOES)
+1. Group what can be grouped and the attribute aggregated does not need to be in the group by clause
+
+my proudest SQL moment 
+-- new master task, count the number of page_scrolls by user in the data
+with sc as (
+select user_id, timestamp::date, action, count(*) as freq from facebook_web_log
+where action =  'scroll_down'
+or action = 'scroll_up'
+group by (user_id, timestamp::date, action)
+)
+
+select user_id, sum(freq) as scroll_freq from sc
+group by user_id
+order by 1
+7. suibquerries is key in my work as an sql dev
