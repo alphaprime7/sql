@@ -1,0 +1,1 @@
+select age(localtimestamp, date_trunc('year', localtimestamp)) as ageexample
